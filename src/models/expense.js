@@ -19,6 +19,11 @@ const schema = new mongoose.Schema(
       default: false,
       required: true,
     },
+    paymentDue: {
+      desc: "When payment is due",
+      type: Date,
+      required: true,
+    },
   },
   {
     strict: true,
