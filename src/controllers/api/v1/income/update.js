@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     return res.status(400).send(`Can't continue with request`)
 
   // Make the query
-  return models.Income.updateOne({ amount: { $gt: 0 }}, data)
-    .then(() => res.status(201).send('Income created'))
+  return models.Income.findOneAndUpdate({ amount: { $gt: 0 }}, data, { upsert: true })
+    .then(() => res.status(201).send(`Income updated`))
     .catch(err => res.status(500).send(`Error: ${ err }`))
 }
