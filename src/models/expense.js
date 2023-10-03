@@ -19,6 +19,12 @@ const schema = new mongoose.Schema(
       default: false,
       required: true,
     },
+    paidAt: {
+      desc: "Date when expense was paid at",
+      type: Date,
+      default: false,
+      required: true,
+    },
     paymentDue: {
       desc: "When payment is due",
       type: Date,
