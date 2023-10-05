@@ -1,9 +1,12 @@
 const models = require('../../../../models')
+const omit = require('lodash/omit')
 
 module.exports = (req, res) => {
   let data = req.body.data
   const id = req.params.id
 
+  data = omit(data, 'paidAt')
+  
   // Sanity check
   if ( !id || !data || !Object.keys(data).length || Object.values(data).some(o => o === '') )
     return res.status(400).send(`Can't continue with request`)
