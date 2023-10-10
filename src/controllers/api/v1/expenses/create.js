@@ -15,10 +15,6 @@ module.exports = async (req, res) => {
     const beginningOfMonth = Sugar.Date(data.date).beginningOfMonth().raw
     const endOfMonth = Sugar.Date(data.date).endOfMonth().raw
 
-    console.log(beginningOfMonth);
-    console.log(endOfMonth);
-    console.log('data.currentExpenseDate', data.currentExpenseDate);
-
     const expenses = await models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth } }).lean()
     if ( !expenses.length )
       return res.status(404).send('No previous expenses at given date has been found')
