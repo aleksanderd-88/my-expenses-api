@@ -8,7 +8,7 @@ module.exports = (req, res) => {
   data = omit(data, 'paidAt')
   
   // Sanity check
-  if ( !id || !data || !Object.keys(data).length || Object.values(data).some(o => o === '') )
+  if ( !id || !data || !Object.keys(data).length )
     return res.status(400).send(`Can't continue with request`)
 
   if ( data.isPaid ) 

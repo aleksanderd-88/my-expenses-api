@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   const data = req.body.data
 
   // Sanity check
-  if ( !data || !Object.keys(data).length || Object.values(data).some(o => o === '') )
+  if ( !data || !Object.keys(data).length )
     return res.status(400).send(`Can't continue with request`)
 
   if ( data.copyPrevious ) {
