@@ -25,6 +25,7 @@ module.exports = async (req, res) => {
         cost: e.cost || 0,
         isPaid: false,
         paidAt: null,
+        categoryId: e.categoryId,
         paymentDue: Sugar.Date(e.paymentDue).addMonths(1).raw
       }
     })
