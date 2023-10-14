@@ -10,3 +10,9 @@ module.exports = router.delete('/api/v1/expenses/:id/delete', controllers.expens
 //- Income routes
 module.exports = router.get('/api/v1/income/get', controllers.income.get)
 module.exports = router.patch('/api/v1/income/update', controllers.income.update)
+
+//- Category routes
+module.exports = router.post('/api/v1/categories/create', controllers.categories.create)
+module.exports = router.get('/api/v1/categories/list', controllers.categories.list)
+module.exports = router.patch('/api/v1/categories/:id/update', controllers.categories.update)
+module.exports = router.delete('/api/v1/categories/:id/delete', controllers.categories._delete)

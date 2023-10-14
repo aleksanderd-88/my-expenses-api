@@ -29,6 +29,11 @@ const schema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    categoryId: {
+      desc: "Link expense to a category",
+      type: String,
+      default: null,
+    },
   },
   {
     strict: true,

@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   const data = req.body.data
 
   // Sanity check
-  if ( !data || !Object.keys(data).length || Object.values(data).some(o => o === '') )
+  if ( !data || !Object.keys(data).length )
     return res.status(400).send(`Can't continue with request`)
 
   if ( data.copyPrevious ) {
@@ -25,6 +25,7 @@ module.exports = async (req, res) => {
         cost: e.cost || 0,
         isPaid: false,
         paidAt: null,
+        categoryId: e.categoryId,
         paymentDue: Sugar.Date(e.paymentDue).addMonths(1).raw
       }
     })
