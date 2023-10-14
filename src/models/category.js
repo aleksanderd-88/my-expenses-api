@@ -5,7 +5,8 @@ const schema = new mongoose.Schema(
     label: {
       desc: "Category label",
       type: String,
-      required: true
+      required: true,
+      unique: true
     }
   },
   {
