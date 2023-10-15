@@ -21,3 +21,4 @@ module.exports = router.delete('/api/v1/categories/:id/delete', verifyUser, cont
 //- User routes
 module.exports = router.post('/api/v1/users/create', controllers.users.create)
 module.exports = router.post('/api/v1/users/auth', controllers.users.auth)
+module.exports = router.get('/api/v1/users/:id/get', controllers.users.get)
