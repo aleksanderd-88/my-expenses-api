@@ -7,6 +7,11 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true
+    },
+    userId: {
+      desc: "Associated user id",
+      type: String,
+      required: true
     }
   },
   {

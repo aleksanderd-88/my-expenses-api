@@ -34,6 +34,11 @@ const schema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    userId: {
+      desc: "Associated user id",
+      type: String,
+      required: true
+    }
   },
   {
     strict: true,
