@@ -12,7 +12,7 @@ module.exports = (req, res) => {
   const endOfMonth = Sugar.Date(data.date).endOfMonth().raw
 
   // Make the query
-  return models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth }}).lean()
+  return models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth }, userId: req.user._id }).lean()
     .then((results) => res.status(200).send({ rows: results }))
     .catch(err => res.status(500).send(`Error: ${ err }`))
 }

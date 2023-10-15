@@ -6,6 +6,11 @@ const schema = new mongoose.Schema(
       desc: "Expense cost",
       type: Number,
       required: true
+    },
+    userId: {
+      desc: "Associated user id",
+      type: String,
+      required: true
     }
   },
   {

@@ -35,6 +35,10 @@ module.exports = async (req, res) => {
       .catch(err => res.status(500).send(`Error: ${ err }`))
   }
 
+  //- Set user id
+  if ( !data.userId )
+    data.userId = req.user._id
+
   // Make the query
   return models.Expense.create(data)
     .then(() => res.status(201).send('Expense created'))
