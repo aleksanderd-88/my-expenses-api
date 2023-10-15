@@ -16,3 +16,7 @@ module.exports = router.post('/api/v1/categories/create', controllers.categories
 module.exports = router.get('/api/v1/categories/list', controllers.categories.list)
 module.exports = router.patch('/api/v1/categories/:id/update', controllers.categories.update)
 module.exports = router.delete('/api/v1/categories/:id/delete', controllers.categories._delete)
+
+//- User routes
+module.exports = router.post('/api/v1/users/create', controllers.users.create)
+module.exports = router.post('/api/v1/users/auth', controllers.users.auth)
