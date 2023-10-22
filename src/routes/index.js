@@ -7,6 +7,7 @@ module.exports = router.post('/api/v1/expenses/create', verifyUser, controllers.
 module.exports = router.patch('/api/v1/expenses/list', verifyUser, controllers.expenses.list)
 module.exports = router.patch('/api/v1/expenses/:id/update', verifyUser, controllers.expenses.update)
 module.exports = router.delete('/api/v1/expenses/:id/delete', verifyUser, controllers.expenses._delete)
+module.exports = router.patch('/api/v1/expenses/update-selected', verifyUser, controllers.expenses.updateSelected)
 
 //- Income routes
 module.exports = router.get('/api/v1/income/get', verifyUser, controllers.income.get)
