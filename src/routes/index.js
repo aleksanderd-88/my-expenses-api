@@ -12,6 +12,8 @@ module.exports = router.patch('/api/v1/expenses/update-selected', verifyUser, co
 //- Income routes
 module.exports = router.get('/api/v1/income/get', verifyUser, controllers.income.get)
 module.exports = router.patch('/api/v1/income/update', verifyUser, controllers.income.update)
+module.exports = router.post('/api/v1/income/create', verifyUser, controllers.income.create)
+module.exports = router.patch('/api/v1/income/list', verifyUser, controllers.income.list)
 
 //- Category routes
 module.exports = router.post('/api/v1/categories/create', verifyUser, controllers.categories.create)
