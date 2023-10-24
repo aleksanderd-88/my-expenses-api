@@ -2,8 +2,13 @@ const mongoose = require("../config/atlas_connect");
 
 const schema = new mongoose.Schema(
   {
+    name: {
+      desc: "Name of income owner",
+      type: String,
+      unique: true
+    },
     amount: {
-      desc: "Expense cost",
+      desc: "Income amount",
       type: Number,
       required: true
     },
