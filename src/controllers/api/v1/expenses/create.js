@@ -8,6 +8,10 @@ module.exports = async (req, res) => {
   if ( !data || !Object.keys(data).length )
     return res.status(400).send(`Can't continue with request`)
 
+  //- Set user id
+  if ( !data.userId )
+    data.userId = req.user._id
+
   if ( data.copyPrevious ) {
     if ( !data.date )
       return res.status(404).send('No date parameter was given')
@@ -18,10 +22,6 @@ module.exports = async (req, res) => {
     const expenses = await models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth } }).lean()
     if ( !expenses.length )
       return res.status(404).send('No previous expenses at given date has been found')
-
-    //- Set user id
-    if ( !data.userId )
-      data.userId = req.user._id
 
     const resetExpenses = expenses.map(e => {
       return {
