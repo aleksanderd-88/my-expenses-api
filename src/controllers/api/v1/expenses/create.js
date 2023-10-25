@@ -19,12 +19,17 @@ module.exports = async (req, res) => {
     if ( !expenses.length )
       return res.status(404).send('No previous expenses at given date has been found')
 
+    //- Set user id
+    if ( !data.userId )
+      data.userId = req.user._id
+
     const resetExpenses = expenses.map(e => {
       return {
         name: e.name || '',
         cost: e.cost || 0,
         isPaid: false,
         paidAt: null,
+        userId: data.userId,
         categoryId: e.categoryId,
         paymentDue: Sugar.Date(e.paymentDue).addMonths(1).raw
       }
@@ -34,10 +39,6 @@ module.exports = async (req, res) => {
       .then(() => res.status(201).send('Successfully copied previous month'))
       .catch(err => res.status(500).send(`Error: ${ err }`))
   }
-
-  //- Set user id
-  if ( !data.userId )
-    data.userId = req.user._id
 
   // Make the query
   return models.Expense.create(data)
