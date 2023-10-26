@@ -16,8 +16,7 @@ const schema = new mongoose.Schema(
     isPaid: {
       desc: "Expense is paid or not",
       type: Boolean,
-      default: false,
-      required: true,
+      default: false
     },
     paidAt: {
       desc: "Date when expense was paid at",
