@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
 
     const expenses = await models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth }, userId: req.user._id }).lean()
     if ( !expenses.length )
-      return res.status(404).send('No previous expenses at given date has been found')
+      return res.status(404).send('Expense(s) from previous month could not be found')
 
     const resetExpenses = expenses.map(e => {
       return {
