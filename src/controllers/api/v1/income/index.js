@@ -1,13 +1,13 @@
+const update = require('./update')
+const get = require('./get')
 const create = require('./create')
 const list = require('./list')
-const update = require('./update')
 const _delete = require('./delete')
-const updateSelected = require('./update-selected')
 
 module.exports = {
+  update,
+  get,
   create,
   list,
-  update,
-  _delete,
-  updateSelected
+  _delete
 }

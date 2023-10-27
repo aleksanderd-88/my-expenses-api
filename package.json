@@ -6,16 +6,24 @@
   "author": "Aleksander Dimitrijevic",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.5.3"
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^7.5.3",
+    "sugar": "^2.0.6"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
   "scripts": {
     "dev": "nodemon index",
-    "start": "node index"
+    "start": "node index",
+    "ci": "rm -rf node_modules && yarn install --frozen-lockfile"
+  },
+  "nodemonConfig": {
+    "legacyWatch": true
   }
 }
