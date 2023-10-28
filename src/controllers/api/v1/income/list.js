@@ -4,7 +4,6 @@ module.exports = (req, res) => {
 
   // Make the query
   return models.Income.find({
-    amount: { $gt: 0 }, 
     name: { $ne: null }, 
     userId: req.user._id 
   }).lean()
