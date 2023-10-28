@@ -5,7 +5,6 @@ const schema = new mongoose.Schema(
     name: {
       desc: "Name of income owner",
       type: String,
-      unique: true
     },
     amount: {
       desc: "Income amount",

@@ -13,6 +13,6 @@ module.exports = (req, res) => {
 
   // Make the query
   return models.Income.create(data)
-    .then((income) => res.status(200).send(income))
+    .then((income) => res.status(201).send(income))
     .catch(err => res.status(500).send(`Error: ${ err }`))
 }
