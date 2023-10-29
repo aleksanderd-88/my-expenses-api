@@ -1,4 +1,6 @@
 const models = require('../../../../models')
+const { decryptHash } = require('../../../../utils/useCrypting')
+const get = require('lodash/get')
 
 module.exports = (req, res) => {
 
@@ -7,6 +9,16 @@ module.exports = (req, res) => {
     name: { $ne: null }, 
     userId: req.user._id 
   }).lean()
-  .then((incomes) => res.status(200).send(incomes))
+  .then((incomes) => {
+    let modifiedIncomes = []
+    for (let income of incomes) {
+      if ( typeof income.amount !== 'number' ) {
+        income = { ...income, amount: Number(decryptHash(get(income, 'amount', ''))) }
+      }
+
+      modifiedIncomes.push(income)
+    }
+    res.status(200).send(modifiedIncomes || [])
+  })
   .catch(err => res.status(500).send(`Error: ${ err }`))
 }

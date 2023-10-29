@@ -7,8 +7,8 @@ const schema = new mongoose.Schema(
       type: String,
     },
     amount: {
-      desc: "Income amount",
-      type: Number,
+      desc: "Hashed income amount",
+      type: String,
       required: true
     },
     userId: {

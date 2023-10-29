@@ -1,4 +1,5 @@
 const models = require('../../../../models')
+const { generateHash } = require('../../../../utils/useCrypting')
 
 module.exports = (req, res) => {
   const data = req.body.data
@@ -14,6 +15,9 @@ module.exports = (req, res) => {
   //- Handle falsy amount value
   if ( !data.amount )
     data.amount = 0
+
+  //- Hash income
+  data.amount = generateHash(data.amount.toString())
 
   // Make the query
   return models.Income.create(data)
