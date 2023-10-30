@@ -8,6 +8,7 @@ module.exports = router.patch('/api/v1/expenses/list', verifyUser, controllers.e
 module.exports = router.patch('/api/v1/expenses/:id/update', verifyUser, controllers.expenses.update)
 module.exports = router.delete('/api/v1/expenses/:id/delete', verifyUser, controllers.expenses._delete)
 module.exports = router.patch('/api/v1/expenses/update-selected', verifyUser, controllers.expenses.updateSelected)
+module.exports = router.patch('/api/v1/expenses/delete-selected', verifyUser, controllers.expenses.deleteSelected)
 
 //- Income routes
 module.exports = router.get('/api/v1/income/get', verifyUser, controllers.income.get)
