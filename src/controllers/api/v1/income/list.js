@@ -1,5 +1,5 @@
 const models = require('../../../../models')
-const { decryptHash } = require('../../../../utils/useCrypting')
+const { decrypt } = require('../../../../utils/useCrypting')
 const get = require('lodash/get')
 
 module.exports = (req, res) => {
@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     let modifiedIncomes = []
     for (let income of incomes) {
       if ( typeof income.amount !== 'number' ) {
-        income = { ...income, amount: Number(decryptHash(get(income, 'amount', ''))) }
+        income = { ...income, amount: Number(decrypt(get(income, 'amount', ''))) }
       }
 
       modifiedIncomes.push(income)

@@ -1,5 +1,5 @@
 const models = require('../../../../models')
-const { generateHash } = require('../../../../utils/useCrypting')
+const { encrypt } = require('../../../../utils/useCrypting')
 
 module.exports = (req, res) => {
   const data = req.body.data
@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     data.amount = 0
 
   //- Hash income
-  data.amount = generateHash(data.amount.toString())
+  data.amount = encrypt(data.amount.toString())
 
   // Make the query
   return models.Income.updateOne({ _id: data._id }, data)
