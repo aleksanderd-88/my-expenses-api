@@ -2,12 +2,16 @@ const router = require('express').Router()
 const controllers = require('../controllers')
 const verifyUser = require('../middleware/verifyUser')
 
+//- App version
+module.exports = router.get('/api/v1/version', verifyUser, controllers.version.get)
+
 //- Expenses routes
 module.exports = router.post('/api/v1/expenses/create', verifyUser, controllers.expenses.create)
 module.exports = router.patch('/api/v1/expenses/list', verifyUser, controllers.expenses.list)
 module.exports = router.patch('/api/v1/expenses/:id/update', verifyUser, controllers.expenses.update)
 module.exports = router.delete('/api/v1/expenses/:id/delete', verifyUser, controllers.expenses._delete)
 module.exports = router.patch('/api/v1/expenses/update-selected', verifyUser, controllers.expenses.updateSelected)
+module.exports = router.patch('/api/v1/expenses/delete-selected', verifyUser, controllers.expenses.deleteSelected)
 
 //- Income routes
 module.exports = router.get('/api/v1/income/get', verifyUser, controllers.income.get)
