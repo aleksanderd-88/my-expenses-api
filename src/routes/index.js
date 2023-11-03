@@ -2,6 +2,9 @@ const router = require('express').Router()
 const controllers = require('../controllers')
 const verifyUser = require('../middleware/verifyUser')
 
+//- App version
+module.exports = router.get('/api/v1/version', verifyUser, controllers.version.get)
+
 //- Expenses routes
 module.exports = router.post('/api/v1/expenses/create', verifyUser, controllers.expenses.create)
 module.exports = router.patch('/api/v1/expenses/list', verifyUser, controllers.expenses.list)
