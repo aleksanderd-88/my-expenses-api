@@ -1,5 +1,6 @@
 const models = require('../../../../models')
 const Sugar = require('sugar')
+const { encrypt } = require('../../../../utils/useCrypting')
 
 module.exports = async (req, res) => {
   const data = req.body.data
@@ -24,6 +25,8 @@ module.exports = async (req, res) => {
       return res.status(404).send('Expense(s) from previous month could not be found')
 
     const resetExpenses = expenses.map(e => {
+      e.cost = typeof e.cost === 'number' ? encrypt(e.cost.toString()) : e.cost
+
       return {
         name: e.name || '',
         cost: e.cost || 0,
@@ -39,6 +42,9 @@ module.exports = async (req, res) => {
       .then(() => res.status(201).send('Successfully copied previous month'))
       .catch(err => res.status(500).send(`Error: ${ err }`))
   }
+
+  //- Encrypt data
+  data.cost = encrypt(data.cost)
 
   // Make the query
   return models.Expense.create(data)

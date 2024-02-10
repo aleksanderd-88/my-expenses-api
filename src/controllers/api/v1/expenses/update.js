@@ -1,5 +1,6 @@
 const models = require('../../../../models')
 const omit = require('lodash/omit')
+const { encrypt } = require('../../../../utils/useCrypting')
 
 module.exports = (req, res) => {
   let data = req.body.data
@@ -11,6 +12,8 @@ module.exports = (req, res) => {
 
   if ( !data.isPaid ) 
     data.paidAt = null
+
+  data.cost = encrypt(data.cost)
   
   // Make the query
   return models.Expense.updateOne({ _id: id }, data)

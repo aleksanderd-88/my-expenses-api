@@ -9,8 +9,8 @@ const schema = new mongoose.Schema(
       required: true
     },
     cost: {
-      desc: "Expense cost",
-      type: Number,
+      desc: "Hashed expense cost",
+      type: String,
       required: true
     },
     isPaid: {

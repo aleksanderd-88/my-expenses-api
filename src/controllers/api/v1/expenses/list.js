@@ -1,5 +1,7 @@
 const models = require('../../../../models')
 const Sugar = require('sugar')
+const { decrypt } = require('../../../../utils/useCrypting')
+const { get } = require('lodash')
 
 module.exports = (req, res) => {
   const data = req.body.data
@@ -13,6 +15,9 @@ module.exports = (req, res) => {
 
   // Make the query
   return models.Expense.find({ paymentDue: { $gte: beginningOfMonth, $lte: endOfMonth }, userId: req.user._id }).lean()
-    .then((results) => res.status(200).send({ rows: results }))
+    .then((results) => {
+      results.forEach(r => r.cost = typeof r.cost === 'string' ? Number(decrypt(get(r, 'cost', ''))) : r.cost)
+      res.status(200).send({ rows: results })
+    })
     .catch(err => res.status(500).send(`Error: ${ err }`))
 }
