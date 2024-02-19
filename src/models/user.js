@@ -35,7 +35,7 @@ schema.methods.generateToken = function(payload = {}) {
   if ( !payload )
     throw Error('Payload is missing')
 
-  return JWT.sign(payload, process.env.SECRET)
+  return JWT.sign(payload, process.env.SECRET, { expiresIn: '1h'})
 }
 
 module.exports = mongoose.model("User", schema);
