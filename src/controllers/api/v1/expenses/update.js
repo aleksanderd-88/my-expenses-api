@@ -13,6 +13,11 @@ module.exports = (req, res) => {
   if ( !data.isPaid ) 
     data.paidAt = null
 
+  //- If cost has falsy value i.e. "" | null | 0 then set value to "0"
+  if ( !data.cost ) {
+    //- The encrypt() input parameter expects a string value
+    data.cost = "0" 
+  }
   data.cost = encrypt(data.cost)
   
   // Make the query
